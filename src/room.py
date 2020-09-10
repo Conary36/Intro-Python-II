@@ -24,3 +24,6 @@ class Room():
             return self.w_to
         else:
             return None
+
+    def add(self, item):
+        self.items.append(item)

@@ -9,3 +9,4 @@ class Item:
 
     def on_drop(self):
         print(f'Dropped {self.name}.')
+
