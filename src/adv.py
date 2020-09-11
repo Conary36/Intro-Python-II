@@ -1,6 +1,6 @@
-import os, sys
+import sys, os
 from room import Room
-from item import Item
+
 from player import Player
 
 # Declare all the rooms
@@ -53,18 +53,30 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-lamp = Item('lamp', 'Shining bright')
-sword = Item('sword', 'Double Edged Blade')
-shield = Item('shield', 'Defends against arrows')
-crucifix = Item('crucifix', 'wards off vampires')
-cloak = Item('cloak', 'For invisibility')
-loot = Item('loot', 'chest full of treasure')
+# lamp = Item('lamp', 'Shining bright')
+# sword = Item('sword', 'Double Edged Blade')
+# shield = Item('shield', 'Defends against arrows')
+# crucifix = Item('crucifix', 'wards off vampires')
+# cloak = Item('cloak', 'For invisibility')
+# loot = Item('loot', 'chest full of treasure')
+directions = {"n", "s", "e", "w"}
 
 
 def game():
     player_name = input('Enter your name: ')
-    player = Player(player_name, room['outside'], True)
+    player = Player(player_name, room['outside'])
     print(f'{player.name} your GAME has begun')
 
-    while player == True:
-        print(f'You are {player.current_room}, enter castle.')
+    while player:
+        print(f'You are in the {player.current_room.name}\n{player.current_room.description}')
+
+        player_input = input("Please choose a direction").lower().strip()
+        if player_input in directions:
+            player.player_move(player_input)
+
+        elif player_input == 'q':
+
+            print(f"You have fell in a ditch, Goodbye")
+            sys.exit()
+
+game()

@@ -10,5 +10,14 @@ class Player:
     def __str__(self):
         return '\nName:{self.name}\nLocation:{self.current_room}\n'.format(self=self)
 
-    def collectItem(self, item_name):
-        y = [v ]
+    def player_move(self, direction):
+        connected_room = self.current_room.new_rooms(direction)
+        if connected_room is not None:
+            self.current_room = connected_room
+
+        else:
+            print(f"\nTry Again")
+
+    # def collectItem(self, item_name):
+
+
