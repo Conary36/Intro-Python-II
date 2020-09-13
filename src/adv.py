@@ -1,11 +1,11 @@
 import sys
 
-from player import Player
-from room import Room
+from src.player import Player
+from src.room import Room
 
 from src.items.charm import Charm
 from src.items.weapon import Weapon
-
+from src.items.item import Item
 
 # Declare items for rooms
 lamp = Charm('lamp', 'Shining bright', 2)
@@ -95,14 +95,8 @@ def game():
         if player_input in directions:
             player.player_move(player_input)
 
-        elif player_input in ['i', 'holster']:
+        elif player_input == 'h':
             print(player.holsterItems())
-        if len((Item := player_input.split(' '))) == 2:
-            action, obj = Item
-        elif action == 'pick up':
-            player.collectItem(f"You have just found {obj}")
-        elif action == 'drop it':
-            player.putDownItem(f"{obj} is dropped")
         elif player_input == 'q':
             print(f"You have fell in a ditch, Goodbye")
         else:
