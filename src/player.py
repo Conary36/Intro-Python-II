@@ -37,7 +37,7 @@ class Player:
             self.current_room.add(dumped)
             dumped.on_drop()
         else:
-            print('Error: that item is not in the inventory')
+            print('No items to get rid of')
 
     def holsterItems(self):
         print('items:')
