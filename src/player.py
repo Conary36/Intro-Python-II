@@ -1,6 +1,9 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 
+from src.items.item import Item
+
+
 class Player:
     def __init__(self, name, current_room):
         self.name = name
@@ -18,28 +21,29 @@ class Player:
         else:
             print(f"\nTry Again")
 
-    def collectItem(self, item_name):
-        found = self.current_room.collectItem(item_name)
+    def collectItem(self, Item):
+        found = self.current_room.get_item(Item)
 
         if found:
             self.holster.append(found)
-            found.on_take()
+            print(f'{found}')
         else:
             print('NOPE, not here!')
 
-    def putDownItem(self, item_name):
+    def putDownItem(self, Item):
         dumped = None
         for i, item in enumerate(self.holster):
-            if item_name == item.name:
+            if Item == Item:
                 dumped = self.holster.pop(i)
                 break
         if dumped:
-            self.current_room.add(dumped)
-            dumped.on_drop()
-        else:
-            print('No items to get rid of')
+            self.holster.remove(self.Item)
+            return f"{self.holster}"
 
-    def holsterItems(self):
+        # else:
+        #     print('No items to get rid of')
+
+    def holsterItems(self,):
         print('items:')
 
         if not len(self.holster):

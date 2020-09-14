@@ -27,10 +27,13 @@ class Room:
         else:
             return None
 
-    def addItem(self, item):
-        self.items.append(item)
+    def add_item(self, Item):
+        self.items.append(Item)
 
-    def getItem(self, item_name):
+    def remove_item(self, Item):
+        self.item.remove(Item)
+
+    def get_item(self, item_name):
         for i, item in enumerate(self.items):
             if item_name == item.name:
                 return self.items.pop(i)

@@ -3,6 +3,7 @@ import sys
 from src.player import Player
 from src.room import Room
 
+
 from src.items.charm import Charm
 from src.items.weapon import Weapon
 from src.items.item import Item
@@ -74,12 +75,12 @@ print("************************************\n"
       "************************************")
 directions = {"n", "s", "e", "w", "d"}
 
-room['outside'].addItem(lamp)
-room['foyer'].addItem(sword)
-room['foyer'].addItem(shield)
-room['dungeon'].addItem(crucifix)
-room['overlook'].addItem(cloak)
-room['treasure'].addItem(loot)
+room['outside'].add_item(lamp)
+room['foyer'].add_item(sword)
+room['foyer'].add_item(shield)
+room['dungeon'].add_item(crucifix)
+room['overlook'].add_item(cloak)
+room['treasure'].add_item(loot)
 
 
 def game():
@@ -97,6 +98,9 @@ def game():
 
         elif player_input == 'h':
             print(player.holsterItems())
+        elif player_input == "take":
+            player.collectItem(Item)
+            print(f'{player.holsterItems()}')
         elif player_input == 'q':
             print(f"You have fell in a ditch, Goodbye")
         else:
@@ -104,5 +108,5 @@ def game():
             sys.exit()
 
 
-if __name__ == '__main__':
-    game()
+# if __name__ == '__main__':
+game()
